@@ -1,0 +1,4 @@
+description: "A ZMOD4510 Library for ESP32. Requires firmware provided by Renesas."
+version: "0.0.1"
+url: "https://github.com/f-montanari/esp32-zmod4510"
+licence: "MIT"

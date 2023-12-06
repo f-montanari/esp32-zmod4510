@@ -1,0 +1,46 @@
+menu "ZMOD4510 Configuration"
+config ZMOD4510_I2C_MASTER_NUM
+	int "I2C Master Channel Number"
+	default 0
+	help
+	I2C Channel number where ZMOD4510 sensor is connected
+
+config ZMOD4510_SDA_IO
+	int "SDA IO Pin"
+	default 0
+	help
+	IO Pin for I2C's SDA line where ZMOD4510 sensor is connected
+
+config ZMOD4510_SCL_IO
+	int "SCL IO Pin"
+	default 0
+	help
+	IO Pin for I2C's SDA line where ZMOD4510 sensor is connected
+
+config ZMOD4510_I2C_MASTER_FREQ_HZ
+	int "I2C Master Frequency"
+	default 400000
+	help
+	I2C bus frecuency
+	
+config ZMOD4510_ENABLE_PIN
+	int "ZMOD4510 EN GPIO"
+	default 25
+	help
+	ZMOD4510 enable pin
+	
+config ZMOD4510_ENABLE_INTERRUPT
+	bool "Enable interrupt usage"
+	default n
+	help
+		Enables an IRQ for the module. Instead of polling, the component will wait until there's an IRQ
+		from a GPIO pin connected to the INT pin of the ZMOD4510, which saves on power.
+
+if ZMOD4510_ENABLE_INTERRUPT
+	config ZMOD4510_INT_GPIO
+		int "IO pin connected to ZMOD4510 INT pin"
+		default 0
+		help
+		IO pin connected to ZMOD4510 INT pin
+endif
+endmenu

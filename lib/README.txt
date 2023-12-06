@@ -1,0 +1,1 @@
+Paste "lib_oaq_2nd_gen.a" file from Renesas firmware here.
