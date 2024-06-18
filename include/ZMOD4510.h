@@ -12,6 +12,9 @@ typedef enum{
 
 typedef struct {
     float rmox[8]; /**< MOx resistance. */
+    float Rmox_smooth;
+    float O3_conc_1hr;
+    float O3_conc_8hr;
     float O3_conc_ppb; /**< O3_conc_ppb stands for the ozone concentration in part-per-billion */
     uint16_t pid; /**< product id of the sensor */
     uint16_t

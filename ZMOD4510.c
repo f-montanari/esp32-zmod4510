@@ -115,6 +115,12 @@ static void zmod4510_task_handle_irq(void* arg)
 				ESP_LOGI(TAG, " O3_conc_ppb = %6.3f\n", algo_results.O3_conc_ppb);
 				ESP_LOGI(TAG, " Fast AQI = %i\n", algo_results.FAST_AQI);
 				ESP_LOGI(TAG, " EPA AQI = %i\n", algo_results.EPA_AQI);
+				zmod4510_device->O3_conc_ppb = algo_results.O3_conc_ppb;
+				zmod4510_device->O3_conc_1hr = algo_handle.o3_1h_ppb;
+				zmod4510_device->O3_conc_8hr = algo_handle.o3_8h_ppb;
+				zmod4510_device->Rmox_smooth = algo_handle.smooth_rmox;
+				zmod4510_device->EPA_AQI = algo_results.EPA_AQI;
+				zmod4510_device->FAST_AQI = algo_results.FAST_AQI;
 				if (ret == OAQ_2ND_GEN_STABILIZATION) {
 					zmod4510_device->status = SENSOR_WARMING_UP;
 					ESP_LOGI(TAG, "Warm-Up!\n");
@@ -276,6 +282,13 @@ void zmod4510_update_sensor_data(zmod4510_dev_t* device, float temperature, floa
 		ESP_LOGI(TAG, " O3_conc_ppb = %6.3f\n", algo_results.O3_conc_ppb);
 		ESP_LOGI(TAG, " Fast AQI = %i\n", algo_results.FAST_AQI);
 		ESP_LOGI(TAG, " EPA AQI = %i\n", algo_results.EPA_AQI);
+				
+		device->O3_conc_ppb = algo_results.O3_conc_ppb;
+		device->O3_conc_1hr = algo_handle.o3_1h_ppb;
+		device->O3_conc_8hr = algo_handle.o3_8h_ppb;
+		device->Rmox_smooth = algo_handle.smooth_rmox;
+		device->EPA_AQI = algo_results.EPA_AQI;
+		device->FAST_AQI = algo_results.FAST_AQI;
 		if (ret == OAQ_2ND_GEN_STABILIZATION) {
 			device->status = SENSOR_WARMING_UP;
 			ESP_LOGI(TAG, "Warm-Up!\n");
